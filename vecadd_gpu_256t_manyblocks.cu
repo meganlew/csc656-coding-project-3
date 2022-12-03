@@ -4,6 +4,7 @@
 __global__
 void add(int n, float *x, float *y)
 {
+  printf("hello world);
   int index = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (int i = index; i < n; i += stride)
