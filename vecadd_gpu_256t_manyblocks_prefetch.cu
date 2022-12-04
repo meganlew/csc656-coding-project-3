@@ -16,11 +16,16 @@ int main(void)
   int N = 1<<24;
   int blockSize = 256;
   int numBlocks = (N + blockSize - 1) / blockSize;
+  int deviceID = 0;
   float *x, *y;
 
   // Allocate Unified Memory – accessible from CPU or GPU
   cudaMallocManaged(&x, N*sizeof(float));
   cudaMallocManaged(&y, N*sizeof(float));
+
+  cudaMemPrefetchAsync((void *)x, N*sizeof(float), deviceID) ;
+  cudaMemPrefetchAsync((void *)y, N*sizeof(float), deviceID) ;
+
 
   // initialize x and y arrays on the host
   for (int i = 0; i < N; i++) {
