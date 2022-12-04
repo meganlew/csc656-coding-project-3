@@ -23,8 +23,6 @@ int main(void)
   }
   // use chrono timer code to surround call to the add() function
   // insert start timer code here
-  int sleep_secs = 2; // default sleep for 2 secs
-  std::cout << "Going to sleep for " << sleep_secs << " seconds " << std::endl;
   std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
   // Run kernel on 1M elements on the CPU
   add(N, x, y);
